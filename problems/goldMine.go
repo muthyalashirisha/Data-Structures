@@ -3,6 +3,8 @@ package problems
 import (
 	"fmt"
 	"math"
+	"sort"
+	"strconv"
 	"strings"
 )
 
@@ -179,4 +181,30 @@ func MinRepeats(a, b string) {
 			return
 		}
 	}
+}
+func findRelativeRanks(score []int) []string {
+	type pair struct {
+		val int
+		ind int
+	}
+	scores := []pair{}
+	for i, v := range score {
+		scores = append(scores, pair{v, i})
+	}
+	sort.Slice(scores, func(i, j int) bool {
+		return scores[i].val > scores[j].val
+	})
+	ans := make([]string, len(scores))
+	for i := 0; i < len(scores); i++ {
+		if i == 0 {
+			ans[scores[0].ind] = "Gold Medal"
+		} else if i == 1 {
+			ans[scores[1].ind] = "Silver Medal"
+		} else if i == 2 {
+			ans[scores[2].ind] = "Bronze Medal"
+		} else {
+			ans[scores[i].ind] = strconv.Itoa(scores[i].val)
+		}
+	}
+	return ans
 }

@@ -293,23 +293,63 @@ func TaskScheduler(tasks []byte, n int) int {
 
 }
 func isNStraightHand(hand []int, groupSize int) bool {
-	mp := make(map[int]int)
-	for _, x := range hand {
-		mp[x]++
-	}
+	// mp := make(map[int]int)
+	// for _, x := range hand {
+	// 	mp[x]++
+	// }
 
+	// minHeap := &MinHeap2{}
+	// heap.Init(minHeap)
+
+	// for u := range mp {
+	// 	heap.Push(minHeap, u)
+	// }
+
+	// for len(*minHeap) > 0 {
+	// 	var temp []int
+	// 	for i := 0; i < groupSize; i++ {
+	// 		if minHeap.Len() > 0 {
+	// 			temp = append(temp, heap.Pop(minHeap).(int))
+	// 		}
+	// 	}
+
+	// 	for _, val := range temp {
+	// 		if mp[val]--; mp[val] > 0 {
+	// 			heap.Push(minHeap, val)
+	// 		}
+	// 	}
+
+	// 	if len(temp) == groupSize {
+	// 		if !consecutive(temp) {
+	// 			return false
+	// 		}
+	// 	} else {
+	// 		return false
+	// 	}
+	// }
+
+	// return true
 	minHeap := &MinHeap2{}
 	heap.Init(minHeap)
-
-	for u := range mp {
-		heap.Push(minHeap, u)
+	mp := make(map[int]int)
+	for _, x := range hand {
+		if mp[x] == 0 {
+			heap.Push(minHeap, x)
+		}
+		mp[x]++
 	}
 
 	for len(*minHeap) > 0 {
 		var temp []int
 		for i := 0; i < groupSize; i++ {
 			if minHeap.Len() > 0 {
-				temp = append(temp, heap.Pop(minHeap).(int))
+				curr := heap.Pop(minHeap).(int)
+				if len(temp) > 0 && curr != temp[len(temp)-1]+1 {
+					return false
+				}
+				temp = append(temp, curr)
+			} else {
+				return false
 			}
 		}
 
@@ -317,14 +357,6 @@ func isNStraightHand(hand []int, groupSize int) bool {
 			if mp[val]--; mp[val] > 0 {
 				heap.Push(minHeap, val)
 			}
-		}
-
-		if len(temp) == groupSize {
-			if !consecutive(temp) {
-				return false
-			}
-		} else {
-			return false
 		}
 	}
 
@@ -365,6 +397,7 @@ func (k *MinHeap2) Pop() interface{} {
 type Twitter struct {
 	Tweets []Tweet
 }
+
 type Tweet struct {
 	UserId    int
 	TweetId   []int

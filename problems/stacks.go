@@ -193,6 +193,7 @@ func CelebrityStack(M [][]int, N int) int {
 	}
 	fmt.Println(stack)
 	x := stack[len(stack)-1]
+	fmt.Println(x)
 	// if len(stack) == 1 {
 	// 	return stack[0]
 	// }
@@ -230,7 +231,7 @@ func recurSortStack(stack *[]int) {
 	insertEleSorted(stack, ele)
 }
 func insertEleSorted(stack *[]int, ele int) {
-	if len(*stack) == 0 || (*stack)[len(*stack)-1] >= ele {
+	if len(*stack) == 0 || (*stack)[len(*stack)-1] <= ele {
 		*stack = append(*stack, ele)
 		return
 	}

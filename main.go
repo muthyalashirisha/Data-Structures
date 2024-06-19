@@ -1,6 +1,7 @@
 package main
 
 import (
+	"DS/problems"
 	"container/list"
 	"encoding/json"
 	"fmt"
@@ -10,6 +11,118 @@ import (
 	"strconv"
 	"sync"
 )
+
+// func main() {
+// 	// as := problems.SearchOccurence("abcabcabcabc", "abcabc")
+// 	// fmt.Println(as)
+// 	// A := "abcdef"
+// 	// B := "xyzcba"
+// 	// fmt.Println(problems.CelebrityStack([][]int{{1, 0, 1, 0}, {1, 1, 1, 1}, {0, 0, 0, 0}, {0, 1, 1, 1}}, 4)) // Output: true
+// 	// queries := [][]int{{1, 3, 7}}
+// 	// fmt.Println(problems.FindProductsOfElements(queries)) // Example usage
+// 	res := problems.KmpAlgo("sadbutsad", "sad")
+// 	fmt.Println(res, "1")
+// 	res1 := problems.KmpAlgo1("abcabcabcabc", "abcabc")
+// 	// problems.SearchZ("abcabcabcabc", "abcabc")
+// 	fmt.Println(res1, "2")
+// 	// // Sample input string
+// 	// input := "this is an example for huffman encoding"
+
+// 	// // Calculate frequency of each character
+// 	// frequency := make(map[rune]int)
+// 	// for _, char := range input {
+// 	// 	frequency[char]++
+// 	// }
+
+// 	// // Build Huffman Tree
+// 	// huffmanTree := problems.BuildHuffmanTree(frequency)
+
+// 	// // Generate Huffman Codes
+// 	// huffmanCodes := make(map[rune]string)
+// 	// problems.GenerateHuffmanCodes(huffmanTree, "", huffmanCodes)
+
+// 	// // Print Huffman Codes
+// 	// fmt.Println("Character\tFrequency\tHuffman Code")
+// 	// for char, freq := range frequency {
+// 	// 	fmt.Printf("%c\t\t%d\t\t%s\n", char, freq, huffmanCodes[char])
+// 	// }
+
+// 	// trie := problems.NewTrie()
+
+// 	// // Insert words into the trie
+// 	// trie.Insert("apple")
+// 	// trie.Insert("app")
+// 	// trie.Insert("banana")
+
+// 	// // Search for words
+// 	// fmt.Println(trie.Search("apple"))   // true
+// 	// fmt.Println(trie.Search("app"))     // true
+// 	// fmt.Println(trie.Search("appl"))    // false
+// 	// fmt.Println(trie.Search("banana"))  // true
+// 	// fmt.Println(trie.Search("bananas")) // false
+
+// 	// // Search for prefixes
+// 	// fmt.Println(trie.StartsWith("app")) // true
+// 	// fmt.Println(trie.StartsWith("ban")) // true
+// 	// fmt.Println(trie.StartsWith("bat")) // false
+
+// 	// ac := problems.NewAhoCorasick()
+// 	// patterns := []string{"he", "she", "his", "hers"}
+// 	// text := "ushers"
+
+// 	// for _, pattern := range patterns {
+// 	// 	ac.Add(pattern)
+// 	// }
+// 	// ac.Build()
+
+//		// matches := ac.Search(text)
+//		// for pattern, positions := range matches {
+//		// 	fmt.Printf("Pattern '%s' found at positions: %v\n", pattern, positions)
+//		// }
+//	}
+//
+//	func main() {
+//		musicPlayer := problems.NewMusicPlayer()
+//		for i := 0; i < 10; i++ {
+//			song := musicPlayer.GetRandomSong()
+//			fmt.Println("Playing song:", song)
+//			musicPlayer.InsertAgainToPlay()
+//		}
+//	}
+func main() {
+	// musicPlayer := problems.NewMusicPlayer()
+	// for i := 0; i < 10; i++ {
+	// 	song := musicPlayer.GetRandomSong()
+	// 	if song == "" {
+	// 		fmt.Println("No eligible song to play.")
+	// 	} else {
+	// 		fmt.Println("Playing song:", song)
+	// 		musicPlayer.InsertAgainToPlay()
+	// 	}
+	// }
+	// nums := []int{7, 4, 3, 9, 1, 8, 5, 2, 6}
+	// k := 3
+	// result := problems.GetAverages(nums, k)
+	// fmt.Println(result) // Output: [-1 2 3 4 5 6 7 8 9 -1]
+	// s1 := "xyzzaz"
+	// fmt.Println(problems.CountGoodSubstrings(s1)) // Output: 1
+
+	// s2 := "abcabc"
+	// fmt.Println(problems.NumberOfSubstrings(s2)) // Output: 4
+	// s1 := "pbppppdlf"
+	// k1 := 4
+	// fmt.Println(problems.MaxVowels(s1, k1)) // Output: 3
+	// fmt.Println(problems.CelebrityStack([][]int{{0, 0, 0}, {1, 1, 0}, {1, 1, 0}}, 3))
+	// fmt.Println(problems.CelebrityStack([][]int{{1, 1, 1, 0},
+
+	// 	{0, 0, 1, 0},
+
+	// 	{0, 0, 0, 0},
+
+	// 	{1, 1, 1, 0}}, 4))
+	// fmt.Println(problems.SortStack([]int{4, 1, 2, 6, 5, 3, 0}))
+	fmt.Println(problems.LongestPalindromeLengthKMP("abca", "cba"))
+}
 
 type Node struct {
 	data int64
@@ -292,7 +405,7 @@ func main1() {
 // 	// problems.PrevLesserEle([]int{2, 5, 3, 9})
 // 	// problems.StackOpe()
 // 	// fmt.Println(problems.CelebrityGraph([][]int{{0, 0, 0}, {1, 1, 0}, {1, 1, 0}}, 3))
-// 	// fmt.Println(problems.CelebrityStack([][]int{{0, 1, 0}, {1, 1, 0}, {1, 1, 0}}, 3))
+// fmt.Println(problems.CelebrityStack([][]int{{0, 1, 0}, {1, 1, 0}, {1, 1, 0}}, 3))
 // 	// fmt.Println(problems.Permutations([]int{1, 2, 1}))
 // 	// fmt.Println(problems.SortStack([]int{1, 2, 1}))
 // 	// fmt.Println(problems.DistSubSeq("fff"))
